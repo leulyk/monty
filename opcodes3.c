@@ -75,7 +75,7 @@ void pstr(stack_t **stack, __attribute__((unused)) unsigned int line_number)
  * Description: the top element becomes the last one, the second top element
  * becomes the first one. rotl never fails.
  */
-void rotl(stack_t **stack, unsigned int line_number)
+void rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
 	stack_t *temphead = opstack_head;
 
@@ -85,6 +85,8 @@ void rotl(stack_t **stack, unsigned int line_number)
 		temphead->prev = (*stack);
 		opstack_head = opstack_head->next;
 		opstack_tail = temphead;
+		opstack_tail->next = NULL;
+		opstack_head->prev = NULL;
 	}
 }
 
