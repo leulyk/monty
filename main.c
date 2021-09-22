@@ -37,6 +37,8 @@ int main(int argc, char *argv[])
 	{
 		linecount++;
 		opcode = strtok(line, " \n");
+		if (opcode[0] == '#')
+			continue;
 		if (check_opcode(opcode) == 0)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", linecount, opcode);
