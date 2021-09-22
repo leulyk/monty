@@ -83,7 +83,6 @@ void rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 	{
 		newhead = *stack;
 		*stack = (*stack)->prev;
-		newhead->next = NULL;
 		(*stack)->next = NULL;
 
 		newhead->next = opstack_head;
@@ -101,9 +100,19 @@ void rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number)
  *
  * Description: the last element becomes the top one. rotr never fails.
  */
-void rotr(stack_t **stack, unsigned int line_number)
+void rotr(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
-	(void) stack;
-	(void) line_number;
+	stack_t *newtail;
 
+	if (opstack_head && opstack_head->next)
+	{
+		newtail = opstack_head;
+		opstack_head = opstack_head->next;
+		opstack_head->prev = NULL;
+		newtail->next = NULL;
+
+		(*stack)->next = newtail;
+		newtail->prev = (*stack);
+		opstack_tail = newtail;
+	}
 }
