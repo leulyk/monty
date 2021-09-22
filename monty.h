@@ -31,4 +31,31 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+extern char *value;
+extern stack_t *opstack_tail;
+extern stack_t *opstack_head;
+
+int check_opcode(char *input);
+void execute_opcode(char *opcode, stack_t **stack, unsigned int line_n);
+void push(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
+void divide(stack_t **stack, unsigned int line_number);
+void mul(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
+void stackf(stack_t **stack, unsigned int line_number);
+void queue(stack_t **stack, unsigned int line_number);
+stack_t *add_dnodeint_end(stack_t **tail, const int num);
+void free_dlistint(stack_t *head);
+int check_integer(char *input);
+
 #endif
