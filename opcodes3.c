@@ -77,16 +77,19 @@ void pstr(stack_t **stack, __attribute__((unused)) unsigned int line_number)
  */
 void rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
-	stack_t *temphead = opstack_head;
+	stack_t *newhead;
 
-	if (opstack_head)
+	if (*stack && (*stack)->prev)
 	{
-		(*stack)->next = temphead;
-		temphead->prev = (*stack);
-		opstack_head = opstack_head->next;
-		opstack_tail = temphead;
-		opstack_tail->next = NULL;
-		opstack_head->prev = NULL;
+		newhead = *stack;
+		*stack = (*stack)->prev;
+		newhead->next = NULL;
+		(*stack)->next = NULL;
+
+		newhead->next = opstack_head;
+		newhead->prev = NULL;
+		opstack_head->prev = newhead;
+		opstack_head = newhead;
 	}
 }
 
