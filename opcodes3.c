@@ -1,3 +1,5 @@
+#include <stdlib.h>
+#include <stdio.h>
 #include "monty.h"
 
 /**
@@ -20,9 +22,19 @@ void nop(__attribute__((unused)) stack_t **stack,
  */
 void pchar(stack_t **stack, unsigned int line_number)
 {
-	(void) stack;
-	(void) line_number;
-
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n",
+				line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->n < 32 || (*stack)->n > 255)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n",
+				line_number);
+		exit(EXIT_FAILURE);
+	}
+	printf("%c\n", (char)(*stack)->n);
 }
 
 /**
@@ -35,10 +47,23 @@ void pchar(stack_t **stack, unsigned int line_number)
  * The string stops when the stack is over, or the value of the element
  * is 0 or the value of the element is not in the ascii table
  */
-void pstr(stack_t **stack, unsigned int line_number)
+void pstr(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
-	(void) stack;
-	(void) line_number;
+	stack_t *temp = *stack;
+
+	if (*stack == NULL)
+	{
+		printf("\n");
+	}
+	else
+	{
+		while (temp && (temp->n > 0 && temp->n <= 255))
+		{
+			printf("%c", (char)temp->n);
+			temp = temp->prev;
+		}
+		printf("\n");
+	}
 }
 
 /**
@@ -52,9 +77,15 @@ void pstr(stack_t **stack, unsigned int line_number)
  */
 void rotl(stack_t **stack, unsigned int line_number)
 {
-	(void) stack;
-	(void) line_number;
+	stack_t *temphead = opstack_head;
 
+	if (opstack_head)
+	{
+		(*stack)->next = temphead;
+		temphead->prev = (*stack);
+		opstack_head = opstack_head->next;
+		opstack_tail = temphead;
+	}
 }
 
 /**
