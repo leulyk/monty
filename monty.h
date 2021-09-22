@@ -1,6 +1,9 @@
 #ifndef _MONTY_H_
 #define _MONTY_H_
 
+#define STACK 1
+#define QUEUE 0
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -34,6 +37,7 @@ typedef struct instruction_s
 extern char *value;
 extern stack_t *opstack_tail;
 extern stack_t *opstack_head;
+extern int mode;
 
 int check_opcode(char *input);
 void execute_opcode(char *opcode, stack_t **stack, unsigned int line_n);
