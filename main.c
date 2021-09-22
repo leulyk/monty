@@ -37,19 +37,19 @@ int main(int argc, char *argv[])
 	{
 		linecount++;
 		opcode = strtok(line, " \n");
-		if (opcode[0] == '#')
+		if (opcode == NULL || opcode[0] == '#')
 			continue;
 		if (check_opcode(opcode) == 0)
 		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", linecount, opcode);
+			fprintf(stderr, "L%d: unknown instruction%s\n", linecount, opcode);
 			exit(EXIT_FAILURE);
 		}
 		global.value = strtok(NULL, " \n");
 		execute_opcode(opcode, &global.opstack_tail, linecount);
 	}
 	free_dlistint(global.opstack_tail);
-	free(opcode);
-	free(global.value);
+	if (opcode)
+		free(opcode);
 	fclose(fp);
 
 	return (EXIT_SUCCESS);
