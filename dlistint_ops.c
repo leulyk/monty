@@ -25,13 +25,13 @@ stack_t *add_dnodeint_end(stack_t **tail, const int num)
 	newnode->n = num;
 	if (*tail == NULL)
 	{
-		*tail = opstack_head = newnode;
+		*tail = global.opstack_head = newnode;
 	}
 	else
 	{
 		current->next = newnode;
 		newnode->prev = current;
-		opstack_tail = newnode;
+		global.opstack_tail = newnode;
 	}
 
 	return (newnode);

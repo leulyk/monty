@@ -21,7 +21,7 @@ void add(stack_t **stack, unsigned int line_number)
 		temp = (*stack)->prev;
 		(*stack)->prev->n += (*stack)->n;
 		free(*stack);
-		opstack_tail = temp;
+		global.opstack_tail = temp;
 	}
 	else
 	{
@@ -49,7 +49,7 @@ void sub(stack_t **stack, unsigned int line_number)
 		temp = (*stack)->prev;
 		(*stack)->prev->n -= (*stack)->n;
 		free(*stack);
-		opstack_tail = temp;
+		global.opstack_tail = temp;
 	}
 	else
 	{
@@ -77,7 +77,7 @@ void divide(stack_t **stack, unsigned int line_number)
 		temp = (*stack)->prev;
 		(*stack)->prev->n /= (*stack)->n;
 		free(*stack);
-		opstack_tail = temp;
+		global.opstack_tail = temp;
 	}
 	else
 	{
@@ -108,7 +108,7 @@ void mul(stack_t **stack, unsigned int line_number)
 		temp = (*stack)->prev;
 		(*stack)->prev->n *= (*stack)->n;
 		free(*stack);
-		opstack_tail = temp;
+		global.opstack_tail = temp;
 	}
 	else
 	{
@@ -137,7 +137,7 @@ void mod(stack_t **stack, unsigned int line_number)
 		temp = (*stack)->prev;
 		(*stack)->prev->n %= (*stack)->n;
 		free(*stack);
-		opstack_tail = temp;
+		global.opstack_tail = temp;
 	}
 	else
 	{

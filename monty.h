@@ -34,10 +34,25 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern char *value;
-extern stack_t *opstack_tail;
-extern stack_t *opstack_head;
-extern int mode;
+/**
+ * struct global_s - structure to hold variables to be used across
+ * multiple files
+ *
+ * @value: argument supplied to opcode
+ * @opstack_tail: tail node of the doubly linked list
+ * @opstack_head: head node of the doubly linked list
+ * @mode: mode of the program (either STACK or QUEUE)
+ *
+ */
+typedef struct global_s
+{
+	char *value;
+	stack_t *opstack_tail;
+	stack_t *opstack_head;
+	int mode;
+} global_t;
+
+extern global_t global;
 
 int check_opcode(char *input);
 void execute_opcode(char *opcode, stack_t **stack, unsigned int line_n);

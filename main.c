@@ -4,9 +4,7 @@
 #include <string.h>
 #include "monty.h"
 
-char *value = NULL;
-stack_t *opstack_head = NULL, *opstack_tail = NULL;
-int mode = STACK;
+global_t global = { NULL, NULL, NULL, STACK };
 
 /**
  * main - Entry point to the monty interpreter
@@ -46,12 +44,13 @@ int main(int argc, char *argv[])
 			fprintf(stderr, "L%d: unknown instruction %s\n", linecount, opcode);
 			exit(EXIT_FAILURE);
 		}
-		value = strtok(NULL, " \n");
-		execute_opcode(opcode, &opstack_tail, linecount);
+		global.value = strtok(NULL, " \n");
+		execute_opcode(opcode, &global.opstack_tail, linecount);
 	}
-	free_dlistint(opstack_tail);
+	free_dlistint(global.opstack_tail);
 	free(opcode);
-	free(value);
+	free(global.value);
+	fclose(fp);
 
 	return (EXIT_SUCCESS);
 }
@@ -135,7 +134,7 @@ void execute_opcode(char *opcode, stack_t **stack, unsigned int line_n)
 void stackf(__attribute__((unused)) stack_t **stack,
 		__attribute__((unused)) unsigned int line_number)
 {
-	mode = STACK;
+	global.mode = STACK;
 }
 
 /**
@@ -149,8 +148,8 @@ void stackf(__attribute__((unused)) stack_t **stack,
  *   The front of the queue becomes the top of the stack
  *
  */
-void queue(__attribute__((unused)) stack_t **stack, 
+void queue(__attribute__((unused)) stack_t **stack,
 		__attribute__((unused)) unsigned int line_number)
 {
-	mode = QUEUE;
+	global.mode = QUEUE;
 }

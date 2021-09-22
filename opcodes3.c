@@ -85,10 +85,10 @@ void rotl(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 		*stack = (*stack)->prev;
 		(*stack)->next = NULL;
 
-		newhead->next = opstack_head;
+		newhead->next = global.opstack_head;
 		newhead->prev = NULL;
-		opstack_head->prev = newhead;
-		opstack_head = newhead;
+		global.opstack_head->prev = newhead;
+		global.opstack_head = newhead;
 	}
 }
 
@@ -104,15 +104,15 @@ void rotr(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
 	stack_t *newtail;
 
-	if (opstack_head && opstack_head->next)
+	if (global.opstack_head && global.opstack_head->next)
 	{
-		newtail = opstack_head;
-		opstack_head = opstack_head->next;
-		opstack_head->prev = NULL;
+		newtail = global.opstack_head;
+		global.opstack_head = global.opstack_head->next;
+		global.opstack_head->prev = NULL;
 		newtail->next = NULL;
 
 		(*stack)->next = newtail;
 		newtail->prev = (*stack);
-		opstack_tail = newtail;
+		global.opstack_tail = newtail;
 	}
 }

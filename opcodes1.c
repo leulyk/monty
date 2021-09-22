@@ -13,12 +13,12 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	if (value == NULL || check_integer(value) == 0)
+	if (global.value == NULL || check_integer(global.value) == 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	add_dnodeint_end(stack, atoi(value));
+	add_dnodeint_end(stack, atoi(global.value));
 }
 
 /**
@@ -77,7 +77,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	}
 	temp = (*stack)->prev;
 	free(*stack);
-	opstack_tail = temp;
+	global.opstack_tail = temp;
 }
 
 /**
