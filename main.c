@@ -6,6 +6,8 @@
 
 char *value = NULL;
 stack_t *opstack_head = NULL, *opstack_tail = NULL;
+int mode = STACK;
+
 /**
  * main - Entry point to the monty interpreter
  *
@@ -116,4 +118,39 @@ void execute_opcode(char *opcode, stack_t **stack, unsigned int line_n)
 			break;
 		}
 	}
+}
+
+/**
+ * stackf - set the format of the data to a stack (LIFO)
+ * this is the default behavior of the program
+ *
+ * @stack: pointer to the stack to manipulate
+ * @line_number: current line number in the bytecode file
+ *
+ * When switching mode:
+ *   The top of the stack becomes the front of the queue
+ *   The front of the queue becomes the top of the stack
+ *
+ */
+void stackf(__attribute__((unused)) stack_t **stack,
+		__attribute__((unused)) unsigned int line_number)
+{
+	mode = STACK;
+}
+
+/**
+ * queue - set the format of the data to a queue (FIFO)
+ *
+ * @stack: pointer to the stack to manipulate
+ * @line_number: current line number in the bytecode file
+ *
+ * When switching mode:
+ *   The top of the stack becomes the front of the queue
+ *   The front of the queue becomes the top of the stack
+ *
+ */
+void queue(__attribute__((unused)) stack_t **stack, 
+		__attribute__((unused)) unsigned int line_number)
+{
+	mode = QUEUE;
 }
