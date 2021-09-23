@@ -18,7 +18,10 @@ void push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	add_dnodeint_end(stack, atoi(global.value));
+	if (global.mode == STACK)
+		add_dnodeint_end(stack, atoi(global.value));
+	else
+		add_dnodeint(&global.opstack_head, atoi(global.value));
 }
 
 /**
