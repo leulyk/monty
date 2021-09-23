@@ -74,6 +74,7 @@ void rotr(stack_t **stack, unsigned int line_number);
 void stackf(stack_t **stack, unsigned int line_number);
 void queue(stack_t **stack, unsigned int line_number);
 stack_t *add_dnodeint_end(stack_t **tail, const int num);
+stack_t *add_dnodeint(stack_t **head, const int num);
 void free_dlistint(stack_t *head);
 int check_integer(char *input);
 
