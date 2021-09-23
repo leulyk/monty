@@ -38,6 +38,34 @@ stack_t *add_dnodeint_end(stack_t **tail, const int num)
 }
 
 /**
+ * add_dnodeint - add a node to beginning of a doubly linked list
+ *
+ * @head: address of the head node
+ * @num: integer data of the new node
+ *
+ * Return: address of the new node
+ *
+ */
+stack_t *add_dnodeint(stack_t **head, const int num)
+{
+	stack_t *newhead;
+
+	newhead = malloc(sizeof(stack_t));
+	if (newhead == NULL)
+		return (NULL);
+	newhead->n = num;
+
+	newhead->next = *head;
+	if (global.opstack_tail == NULL)
+		global.opstack_tail = newhead;
+	if (*head)
+		(*head)->prev = newhead;
+	*head = newhead;
+
+	return (newhead);
+}
+
+/**
  * free_dlistint - free a doubly linked list
  *
  * @tail: the tail node
