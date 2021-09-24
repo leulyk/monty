@@ -81,10 +81,10 @@ void divide(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		if ((*stack)->n == 0)
-			fprintf(stderr, "L%d: division by zero\n", line_number);
-		else
+		if (*stack == 0)
 			fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+		else if ((*stack)->n == 0)
+			fprintf(stderr, "L%d: division by zero\n", line_number);
 		_exit(EXIT_FAILURE);
 	}
 }
@@ -141,10 +141,10 @@ void mod(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		if ((*stack)->n == 0)
-			fprintf(stderr, "L%d: division by zero\n", line_number);
-		else
+		if (*stack == 0)
 			fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
+		else if ((*stack)->n == 0)
+			fprintf(stderr, "L%d: division by zero\n", line_number);
 		_exit(EXIT_FAILURE);
 	}
 }
