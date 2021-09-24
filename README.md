@@ -39,22 +39,22 @@ Comments begin with #.
 
 ## Opcodes
 
-| Opcode | Description |
-| : -- : | : -- : |
-| push | Usage: push <int>, pushes the element <int> to the stack |
-| pall | prints all values on the stack |
-| pint | prints the value at the top of the stack |
-| pop | removes the top element of the stack |
-| swap | swaps the top two elements on the stack |
-| nop | does nothing |
-| add | adds the top two elements, stores the result in the second top element, and removes the top element |
-| sub | subtracts the top element of the stack from the second top element, stores the result in the second top element, and removes the top element |
-| mul | multiplies the top two elements, stores the result in the second top element, and removes the top element |
-| div | divides the second top element of the stack by the top element, stores the result in the second top element, and removes the top element |
-| mod | computes the remainder of dividing the second top element of the stack by the top element, stores the result in the second top element, and removes the top element |
-| pchar | prints the char at the top of the stack using the ASCII character set |
-| pstr | prints the string starting from the top of the stack using the ASCII character set stopping if stack is over, if character is 0 or if value is not in ASCII table |
-| rotl | rotates the stack to the top |
-| rotr | rotates the stack to the bottom |
-| stack | set the format of the data to stack (this is the default behavior of the program) |
-| queue | set the format of the data to queue |
+Opcode | Description
+: -- : | : -- :
+push | Usage: push <int>, pushes the element <int> to the stack
+pall | prints all values on the stack
+pint | prints the value at the top of the stack
+pop | removes the top element of the stack
+swap | swaps the top two elements on the stack
+nop | does nothing
+add | adds the top two elements, stores the result in the second top element, and removes the top element
+sub | subtracts the top element of the stack from the second top element, stores the result in the second top element, and removes the top element
+mul | multiplies the top two elements, stores the result in the second top element, and removes the top element
+div | divides the second top element of the stack by the top element, stores the result in the second top element, and removes the top element
+mod | computes the remainder of dividing the second top element of the stack by the top element, stores the result in the second top element, and removes the top element
+pchar | prints the char at the top of the stack using the ASCII character set
+pstr | prints the string starting from the top of the stack using the ASCII character set stopping if stack is over, if character is 0 or if value is not in ASCII table
+rotl | rotates the stack to the top
+rotr | rotates the stack to the bottom
+stack | set the format of the data to stack (this is the default behavior of the program)
+queue | set the format of the data to queue
