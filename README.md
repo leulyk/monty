@@ -41,7 +41,7 @@ Comments begin with #.
 ***
 | Opcode | Description |
 | ------ | ----------- |
-| push   | *Usage: push <int>, pushes the element <int> to the stack* |
+| push   | *Usage: push <int> ---- pushes the element <int> to the stack* |
 | pall   | *prints all values on the stack* |
 | pint   | *prints the value at the top of the stack* |
 | pop    | *removes the top element of the stack* |
