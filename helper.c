@@ -10,9 +10,15 @@
  */
 int check_integer(char *input)
 {
-	int i;
+	int i = 0;
 
-	for (i = 0; input[i]; ++i)
+	if (input[i] == '-')
+	{
+		i++;
+		if (input[i] == 0)
+			return (0);
+	}
+	for (; input[i]; ++i)
 		if (isdigit(input[i]) == 0)
 			return (0);
 	return (1);
