@@ -4,7 +4,7 @@
 #include <string.h>
 #include "monty.h"
 
-global_t global = { NULL, NULL, NULL, STACK };
+global_t global = { NULL, NULL, NULL, NULL, NULL, STACK };
 
 /**
  * main - Entry point to the monty interpreter
@@ -16,10 +16,8 @@ global_t global = { NULL, NULL, NULL, STACK };
  */
 int main(int argc, char *argv[])
 {
-	FILE *fp;
 	char *line = NULL;
 	size_t len = 0;
-	char *opcode;
 	int linecount = 0;
 
 	if (argc != 2)
@@ -27,32 +25,32 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	fp = fopen(argv[1], "r");
-	if (fp == NULL)
+	global.fp = fopen(argv[1], "r");
+	if (global.fp == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while (getline(&line, &len, fp) != -1)
+	while (getline(&line, &len, global.fp) != -1)
 	{
 		linecount++;
-		opcode = strtok(line, " \n");
-		if (opcode == NULL || opcode[0] == '#')
+		global.opcode = strtok(line, " \n");
+		if (global.opcode == NULL || global.opcode[0] == '#')
 			continue;
-		if (check_opcode(opcode) == 0)
+		if (check_opcode(global.opcode) == 0)
 		{
-			fprintf(stderr, "L%d: unknown instruction%s\n", linecount, opcode);
-			exit(EXIT_FAILURE);
+			fprintf(stderr, "L%d: unknown instruction%s\n", linecount, global.opcode);
+			_exit(EXIT_FAILURE);
 		}
 		global.value = strtok(NULL, " \n");
-		execute_opcode(opcode, &global.opstack_tail, linecount);
+		execute_opcode(global.opcode, &global.opstack_tail, linecount);
 	}
 	free_dlistint(global.opstack_tail);
-	if (opcode)
-		free(opcode);
-	fclose(fp);
+	if (global.opcode)
+		free(global.opcode);
+	fclose(global.fp);
 
-	return (EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }
 
 /**

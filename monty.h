@@ -1,6 +1,8 @@
 #ifndef _MONTY_H_
 #define _MONTY_H_
 
+#include <stdio.h>
+
 #define STACK 1
 #define QUEUE 0
 
@@ -38,7 +40,9 @@ typedef struct instruction_s
  * struct global_s - structure to hold variables to be used across
  * multiple files
  *
+ * @opcode: the operation code
  * @value: argument supplied to opcode
+ * @fp: the bytecode file to interpret
  * @opstack_tail: tail node of the doubly linked list
  * @opstack_head: head node of the doubly linked list
  * @mode: mode of the program (either STACK or QUEUE)
@@ -46,7 +50,9 @@ typedef struct instruction_s
  */
 typedef struct global_s
 {
+	char *opcode;
 	char *value;
+	FILE *fp;
 	stack_t *opstack_tail;
 	stack_t *opstack_head;
 	int mode;
@@ -77,5 +83,6 @@ stack_t *add_dnodeint_end(stack_t **tail, const int num);
 stack_t *add_dnodeint(stack_t **head, const int num);
 void free_dlistint(stack_t *head);
 int check_integer(char *input);
+void _exit(int status);
 
 #endif

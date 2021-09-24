@@ -26,13 +26,13 @@ void pchar(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n",
 				line_number);
-		exit(EXIT_FAILURE);
+		_exit(EXIT_FAILURE);
 	}
 	if ((*stack)->n < 32 || (*stack)->n > 255)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n",
 				line_number);
-		exit(EXIT_FAILURE);
+		_exit(EXIT_FAILURE);
 	}
 	printf("%c\n", (char)(*stack)->n);
 }

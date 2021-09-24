@@ -16,7 +16,7 @@ void push(stack_t **stack, unsigned int line_number)
 	if (global.value == NULL || check_integer(global.value) == 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
+		_exit(EXIT_FAILURE);
 	}
 	if (global.mode == STACK)
 		add_dnodeint_end(stack, atoi(global.value));
@@ -37,7 +37,7 @@ void pint(stack_t **stack, unsigned int line_number)
 	if (stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
+		_exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);
 }
@@ -76,7 +76,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-		exit(EXIT_FAILURE);
+		_exit(EXIT_FAILURE);
 	}
 	temp = (*stack)->prev;
 	free(*stack);
@@ -105,6 +105,6 @@ void swap(stack_t **stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
+		_exit(EXIT_FAILURE);
 	}
 }
