@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 			continue;
 		if (check_opcode(global.opcode) == 0)
 		{
-			fprintf(stderr, "L%d: unknown instruction%s\n", linecount, global.opcode);
+			fprintf(stderr, "L%d: unknown instruction %s\n", linecount, global.opcode);
 			_exit(EXIT_FAILURE);
 		}
 		global.value = strtok(NULL, " \n");
