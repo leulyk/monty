@@ -60,5 +60,6 @@ Comments begin with #.
 
 ## Author
 
-<span>Leul Yiheyis <span><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/medium.svg" alt="@leulykpro" height="30" width="40" /></a>
+Leul Yiheyis
+<a href="https://linkedin.com/in/leul-yiheyis-a165a394" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="leul-yiheyis-a165a394" height="30" width="40" /></a>
 
