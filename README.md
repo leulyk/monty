@@ -57,3 +57,8 @@ Comments begin with #.
 | rotr   | *rotates the stack to the bottom* |
 | stack  | *set the format of the data to stack (this is the default behavior of the program)* |
 | queue | set the format of the data to queue
+
+## Author
+
+<span>Leul Yiheyis <span><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/medium.svg" alt="@leulykpro" height="30" width="40" /></a>
+
