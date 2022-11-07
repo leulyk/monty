@@ -56,7 +56,7 @@ Comments begin with #.
 | rotl   | *rotates the stack to the top* |
 | rotr   | *rotates the stack to the bottom* |
 | stack  | *set the format of the data to stack (this is the default behavior of the program)* |
-| queue | set the format of the data to queue
+| queue  | *set the format of the data to queue*
 
 ## Author
 
